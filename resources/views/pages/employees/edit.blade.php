@@ -26,6 +26,9 @@
 
             <div class="section-body">
                 <h2 class="section-title">Users</h2>
+
+
+
                 <div class="card">
                     <form action="{{ route('users.update', $user) }}" method="POST">
                         @csrf
@@ -110,22 +113,6 @@
                                     </div>
                                 @enderror
                             </div> --}}
-                            {{-- <div class="form-group">
-                                <label for="employee" class="form-label">Employee</label>
-                                <select class="form-control" name="employee">
-                                    @if ($user->employees_id == null)
-                                        <option value="">-- Select Name --</option>
-                                    @endif
-                                    @foreach ($employees as $employee)
-                                        <option value="{{ $employee->id }}" @if ($user->employees_id == $employee->id) selected @endif>{{ $employee->name }}</option>
-                                    @endforeach
-                                </select>
-                            </div> --}}
-                            <div class="form-group">
-                                <label for="employee" class="form-label">Employee</label>
-                                <input type="text" class="form-control" name="employee" id="employee"
-                                    value="{{ $user->employee_name }}">
-                            </div>
                             <div class="form-group">
                                 <label class="form-label">Roles</label>
                                 <div class="selectgroup w-100">
@@ -156,114 +143,8 @@
 
             </div>
         </section>
-        <div class="modal fade" tabindex="-1" role="dialog" id="modal-employee">
-            <div class="modal-dialog modal-lg" role="main">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Select Employee</h5>
+    </div>
+@endsection
 
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="card">
-                            <div class="card-header">
-                                <h4>Employees</h4>
-                            </div>
-                            <div class="card-body">
-                                <div class="form-group">
-                                    <label for="search">Search</label>
-                                    <input type="search" class="form-control" id="search">
-                                </div>
-                                <table class="table table-hover" id="employee-table">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">ID</th>
-                                            <th scope="col">Name</th>
-                                            {{-- <th scope="col">Jabatan</th> --}}
-                                            <th scope="col">Position</th>
-                                            <th scope="col"></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($employees as $employee)
-                                            <tr>
-                                                <td>{{ $employee->id }}</td>
-                                                <td>{{ $employee->name }}</td>
-                                                {{-- <td>{{ $employee->jabatan->title}}</td> --}}
-                                                <td>{{ $employee->position->title }}</td>
-                                                <td>
-                                                    <button type="button" class="btn btn-primary select-employee"
-                                                        data-employee-id="{{ $employee->id }}"
-                                                        data-employee-name="{{ $employee->name }}">Select</button>
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer bg-whitesmoke br">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    @endsection
-
-    @push('scripts')
-        <script>
-            // $(document).ready(function() {
-            //     $.ajax({
-            //         url: '/api/api-allemployee',
-            //         type: 'GET',
-            //         success: function(response) {
-            //             if (response && response.length > 0) {
-            //                 response.forEach(function(employee) {
-            //                     $('#employee').append('<option value="' + employee.id + '">' +
-            //                         employee.name + '</option>');
-            //                 });
-            //             } else {
-            //                 console.error("Invalid or empty response from server.");
-            //             }
-            //         },
-            //         error: function(xhr, status, error) {
-            //             console.error("Error:", xhr.responseText);
-            //         }
-            //     });
-            // });
-            $(document).ready(function() {
-                $('#employee').click(function() {
-                    $('#modal-employee').modal('show');
-                });
-            });
-            $(document).ready(function() {
-                $('.select-employee').click(function() {
-                    var employeeId = $(this).data('employee-id');
-                    var employeeName = $(this).data('employee-name');
-                    $('#employee').val(employeeName);
-                    $('#employee_id').val(employeeId);
-                    $('#modal-employee').modal('hide');
-                });
-            });
-            $(document).ready(function() {
-                $('#search').keyup(function() {
-                    var searchText = $(this).val().toLowerCase();
-
-                    // Loop through all table rows
-                    $('#employee-table tbody tr').each(function() {
-                        var employeeName = $(this).find('td:eq(1)').text().toLowerCase();
-
-                        // If the search text is found in the employee name, show the row, otherwise hide it
-                        if (employeeName.includes(searchText)) {
-                            $(this).show();
-                        } else {
-                            $(this).hide();
-                        }
-                    });
-                });
-            });
-        </script>
-    @endpush
+@push('scripts')
+@endpush

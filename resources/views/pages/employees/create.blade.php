@@ -30,7 +30,7 @@
 
 
                 <div class="card">
-                    <form action="{{ route('users.store') }}" method="POST">
+                    <form action="{{ route('employees.store') }}" method="POST">
                         @csrf
                         <div class="card-header">
                             <h4>Input Text</h4>
@@ -113,9 +113,9 @@
                                 @enderror
                             </div> --}}
                             <div class="form-group">
-                                <label for="" class="form-label">Employee</label>
-                                <select class="form-control" name="employee" id="employee">select employee
-                                    <option value="">-- Select Name --</option>
+                                <label>Employee</label>
+                                <select class="form-control" name="employee" id="employee">
+                                    <option value="">-- Select Employee --</option>
                                 </select>
                             </div>
                             <div class="form-group">
@@ -150,28 +150,20 @@
 @endsection
 
 @push('scripts')
-    <script>
-        $(document).ready(function() {
-            $.ajax({
-                url: '/api/api-allemployee', // Assuming this is the correct endpoint
-                type: 'GET',
-                // header: {
-                //     "Authentication" : 'Bearer'
-                // }
-                success: function(response) {
-                    if (response && response.length > 0) { // Check if response is not empty
-                        response.forEach(function(employee) { // Loop through each employee
-                            $('#employee').append('<option value="' + employee.id + '">' +
-                                employee.name + '</option>');
-                        });
-                    } else {
-                        console.error("Invalid or empty response from server.");
-                    }
-                },
-                error: function(xhr, status, error) {
-                    console.error("Error:", xhr.responseText);
-                }
-            });
+<script>
+    $(document).ready(function(){
+        $.ajax({
+            url: '/allemployee',
+            type: 'GET',
+            success: function(response) {
+                response.data.forEach(function(employee) {
+                    $('#employee').append('<option value="' + employee.id + '">' + employee.name + '</option>');
+                });
+            },
+            error: function(xhr, status, error) {
+                console.error(xhr.responseText);
+            }
         });
+    });
     </script>
 @endpush

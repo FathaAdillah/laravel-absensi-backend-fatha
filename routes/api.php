@@ -33,3 +33,6 @@ Route::apiResource('/api-permissions', App\Http\Controllers\Api\PermissionContro
 
 //notes
 Route::apiResource('/api-notes', App\Http\Controllers\Api\NoteController::class)->middleware('auth:sanctum');
+
+//employee
+Route::get('/api-allemployee', [App\Http\Controllers\Api\EmpController::class, 'all']);

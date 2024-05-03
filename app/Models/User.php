@@ -23,8 +23,9 @@ class User extends Authenticatable
         'password',
         'phone',
         'role',
-        'position',
-        'department',
+        'employees_id',
+        // 'position',
+        // 'department',
         'face_embedding',
         'image_url',
     ];

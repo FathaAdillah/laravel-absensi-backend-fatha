@@ -31,41 +31,41 @@
                                 <div class="row">
                                     <div class="form-group col-md-6 col-12">
                                         <label>Nama Karyawan</label>
-                                        <p>{{ $permission->user->name }}</p>
+                                        <p>{{ $permissions->uname }}</p>
                                     </div>
                                     <div class="form-group col-md-6 col-12">
                                         <label>Telpon Karyawan</label>
-                                        <p>{{ $permission->user->phone }}</p>
+                                        <p>{{ $permissions->phone }}</p>
                                     </div>
 
                                 </div>
                                 <div class="row">
                                     <div class="form-group col-md-6 col-12">
                                         <label>Position</label>
-                                        <p>{{ $permission->user->position }}</p>
+                                        <p>{{ $permissions->positions }}</p>
                                     </div>
                                     <div class="form-group col-md-6 col-12">
                                         <label>Department</label>
-                                        <p>{{ $permission->user->department }}</p>
+                                        <p>{{ $permissions->departments }}</p>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="form-group col-md-6 col-12">
-                                        <label>Date Permission</label>
-                                        <p>{{ $permission->date_permission }}</p>
+                                        <label>Date Leave</label>
+                                        <p>{{ $permissions->date_permission }}</p>
                                     </div>
                                     <div class="form-group col-md-6 col-12">
                                         <label>Reason</label>
-                                        <p>{{ $permission->reason }}</p>
+                                        <p>{{ $permissions->reason }}</p>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="form-group col-md-6 col-12">
                                         <label>Bukti Dukung</label>
-                                        @if ($permission->image)
+                                        @if ($permissions->image)
                                             <!-- Jika image tersedia, tampilkan gambar -->
                                             <div>
-                                                <img src="{{ asset('storage/permissions/' . $permission->image) }}"
+                                                <img src="{{ asset('storage/permissions/' . $permissions->image) }}"
                                                     alt="Bukti Dukung" class="img-thumbnail mb-3" style="max-width: 200px;">
                                             </div>
                                         @else
@@ -76,7 +76,7 @@
                                     <div class="form-group col-md-6 col-12">
                                         <label>Is Approval</label>
                                         <p>
-                                            @if ($permission->is_approved == 1)
+                                            @if ($permissions->is_approved == 1)
                                                 Approved
                                             @else
                                                 Not Approved
@@ -87,7 +87,7 @@
                                 </div>
                             </div>
                             <div class="card-footer text-right">
-                                <a href="{{ route('permissions.edit', $permission->id) }}" class="btn btn-primary">Edit
+                                <a href="{{ route('permissions.edit', $permissions->id) }}" class="btn btn-primary">Edit
                                     Permission For Approve</a>
                             </div>
                         </div>
