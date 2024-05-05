@@ -38,8 +38,8 @@
 
                     <li class="nav-item">
                         <a href="{{ route('permissions.index') }}" class="nav-link">
-                            <i class="fas fa-lock"></i>
-                            <span>Permission</span>
+                            <i class="fas fa-calendar"></i>
+                            <span>Admin Cuti</span>
                         </a>
                     </li>
                 </ul>
