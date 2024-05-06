@@ -65,7 +65,7 @@ return [
     |
     */
 
-    'timezone' => 'Asia/Singapore',
+    'timezone' => env('APP_URL','Asia/Jakarta'),
 
     /*
     |--------------------------------------------------------------------------
@@ -78,7 +78,7 @@ return [
     |
     */
 
-    'locale' => env('APP_LOCALE', 'en'),
+    'locale' => env('APP_LOCALE', 'id'),
 
     'fallback_locale' => env('APP_FALLBACK_LOCALE', 'en'),
 
